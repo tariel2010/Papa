@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тариэл - СуперПапа 4.0</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ffd8a8, #b2d8b2);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border: 5px solid #ffb366;
+        }
+
+        .hero-img {
+            width: 300px;
+            border-radius: 20px;
+            border: 5px solid #ff9933;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: rotate(-3deg);
+            transition: all 0.3s;
+            margin: 20px;
+        }
+
+        .hero-img:hover {
+            transform: rotate(3deg) scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        h1 {
+            color: #e67e22;
+            text-shadow: 2px 2px 0 #fff;
+            font-size: 2.8rem;
+            animation: jump 1.5s ease infinite;
+        }
+
+        .badge {
+            background: #ff9933;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 15px;
+            font-size: 1.2rem;
+        }
+
+        .super-skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .skill {
+            background: #fff3e6;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ff9933;
+        }
+
+        button {
+            background: #3399ff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 15px;
+        }
+
+        button:hover {
+            background: #2673b3;
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .kids {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        @keyframes jump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating-kid {
+            animation: float 3s ease-in-out infinite;
+            position: absolute;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-kid" style="left: 5%; top: 10%">👧</div>
+    <div class="floating-kid" style="right: 15%; top: 30%">👦</div>
+    <div class="floating-kid" style="left: 20%; bottom: 15%">👧</div>
+    <div class="floating-kid" style="right: 5%; bottom: 25%">👦</div>
+
+    <div class="container">
+        <h1>🚼 Тариэл - Папа 4.0 PRO 🚼</h1>
+        <h3>Гуру многозадачности и мастер бутербродов</h3>
+        
+        <img src="https://i.postimg.cc/HnCTmYqM/IMG-20250315-122755-596.jpg" 
+             alt="Тариэл и его команда" 
+             class="hero-img">
+
+        <div class="badge">Опыт: 4 ребёнка | Способности: ∞</div>
+
+        <div class="super-skills">
+            <div class="skill">✔ Одновременно готовит завтрак и чинит игрушки</div>
+            <div class="skill">✔ Знает 27 колыбельных наизусть</div>
+            <div class="skill">✔ Может спать стоя (с открытыми глазами)</div>
+            <div class="skill">✔ Рекорд скорости: 4 ребёнка за 5 минут в садик</div>
+            <div class="skill">✔ Умеет находить потерянные носки в 4D-пространстве</div>
+            <div class="skill">✔ Эксперт по мультикам 2000-х и 2020-х</div>
+        </div>
+
+        <button onclick="showParentingTip()">Совет от Профи</button>
+        <button onclick="playKidSound()">Детский режим 😜</button>
+    </div>
+
+    <script>
+        const tips = [
+            "Секрет успеха: всегда носи в кармане печеньки!",
+            "Если дети шумят - начинай громче петь сам!",
+            "Лучший способ успокоить истерику - показать смешное селфи!",
+            "Запомни: 4 чашки кофе = 1 суперсила",
+            "Когда все спят - это не сон, это засада!"
+        ];
+
+        function showParentingTip() {
+            const tip = tips[Math.floor(Math.random() * tips.length)];
+            alert(`💡 Тариэл советует:\n"${tip}"`);
+        }
+
+        function playKidSound() {
+            const sounds = [
+                'https://assets.mixkit.co/active_storage/sfx/2426/2426-preview.mp3',
+                'https://assets.mixkit.co/active_storage/sfx/2419/2419-preview.mp3'
+            ];
+            const audio = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
+            audio.play();
+            document.body.style.background = `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()})`;
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(45deg, #ffd8a8, #b2d8b2)';
+            }, 1000);
+        }
+
+        function getRandomColor() {
+            return `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        }
+    </script>
+</body>
+</html>
